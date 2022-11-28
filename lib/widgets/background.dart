@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../constants/color.dart';
+
 BoxDecoration background(BuildContext context){
   return  BoxDecoration(
       image:  DecorationImage(
         image: AssetImage(
-            Theme.of(context).brightness == Brightness.light
+            Theme.of(context).textTheme.headline1?.color == black
             ?"images/book.jpg"
         : "images/book_dark.jpg",
         ),

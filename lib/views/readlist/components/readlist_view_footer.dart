@@ -1,5 +1,6 @@
 part of readlist_view;
 
+
 class ReadlistViewFooter extends StatefulWidget {
   Book book;
    ReadlistViewFooter({Key? key, required this.book}) : super(key: key);

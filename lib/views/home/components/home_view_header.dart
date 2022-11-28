@@ -13,22 +13,22 @@ class _HomeViewHeaderState extends State<HomeViewHeader> {
     return SizedBox(
       height: 40,
       child: AnimatedSwitcher(
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         key: Key(Theme.of(context).brightness.toString()),
         child: Consumer<ThemeProvider>(
           builder: (context, provider,child) {
             return DropdownButton<String>(
               value: provider.currentTheme,
+              dropdownColor: Theme.of(context).textTheme.bodyText2?.color,
               items: [
                   DropdownMenuItem<String>(
                     value: "light",
-                      child: Text("Light" , style: Theme.of(context).textTheme.headline6,)
+                      child: Text("Light" , style: TextStyle(color: Theme.of(context).highlightColor))
                   ),
                   DropdownMenuItem<String>(
                     value: "dark",
-                      child: Text("Dark" , style: Theme.of(context).textTheme.headline6,)
+                      child: Text("Dark" , style: TextStyle(color: Theme.of(context).highlightColor))
                   ),
-
                 ],
                 onChanged: (String? value){
                 provider.changeTheme(value ?? 'light');

@@ -59,7 +59,7 @@ class _HomeViewHeaderState extends State<DetailsViewHeader> {
 
   Widget buildAuthor(){
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
           color: greyOp,
           borderRadius: BorderRadius.circular(16)
@@ -79,7 +79,7 @@ class _HomeViewHeaderState extends State<DetailsViewHeader> {
 
   Widget buildAuthorPublisher(){
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
           color: greyOp,
           borderRadius: BorderRadius.circular(16)
@@ -100,7 +100,7 @@ class _HomeViewHeaderState extends State<DetailsViewHeader> {
 
   Widget buildAuthorPublished(){
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
           color: greyOp,
           borderRadius: BorderRadius.circular(16)
@@ -168,9 +168,9 @@ class _HomeViewHeaderState extends State<DetailsViewHeader> {
               builder: (context, provider,child) {
                 return Row(
                   children: [
-                    Center(child: Text("Read List", style: TextStyle(color: provider.currentTheme == "dark" ? black : white),)),
-                    Icon(Icons.menu_book_rounded, color: provider.currentTheme == "dark" ? black : white,),
-                    buildActionChipCount(provider.currentTheme == "dark" ? black : white)
+                    Center(child: Text("Read List", style: TextStyle(color: Theme.of(context).primaryColor),)),
+                    Icon(Icons.menu_book_rounded, color: Theme.of(context).primaryColor),
+                    buildActionChipCount(Theme.of(context).primaryColor)
                   ],
                 );
               }
@@ -180,10 +180,10 @@ class _HomeViewHeaderState extends State<DetailsViewHeader> {
     );
   }
 
-  ActionChip buildActionChipCount(Color color){
+  ActionChip buildActionChipCount(Color? color){
     return ActionChip(
         backgroundColor: color,
-        label: Text("${context.watch<User>().totalProduct}"),
+        label: Text("${context.watch<User>().totalProduct}" , style: TextStyle(color: Theme.of(context).textTheme.headline1?.color),),
         onPressed: (){
         }
     );

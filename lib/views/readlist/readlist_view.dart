@@ -36,14 +36,12 @@ class ReadListView extends ReadListViewModel {
                 children: [
                   ReadListViewBody(book: book),
                   ReadlistViewFooter(book: book)
-
                 ],
               )).toList(),
           onReorder: (int oldIndex, int newIndex) {
             setState(() {
-
-                final book = context.read<User>().Books.removeAt(oldIndex);
-                context.read<User>().Books.insert(newIndex, book);
+              final book = context.read<User>().Books.removeAt(oldIndex);
+              context.read<User>().Books.insert(newIndex, book);
               });
 
 

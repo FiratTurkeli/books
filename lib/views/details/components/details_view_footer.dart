@@ -13,12 +13,15 @@ class _DetailsViewFooterState extends State<DetailsViewFooter> {
   Widget build(BuildContext context) {
     return  Consumer<ThemeProvider>(
       builder: (context, provider,child) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("Description", style: headerStyle.copyWith(color: provider.currentTheme == "dark" ? white : black)),
-            Text("${widget.book.description}", style: authorstyle.copyWith(color: provider.currentTheme == "dark" ? white : black)),
-          ],
+        return Container(
+          color: Theme.of(context).primaryColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text("Description", style: headerStyle.copyWith(color: provider.currentTheme == "dark" ? white : black)),
+              Text("${widget.book.description}", style: authorstyle.copyWith(color: provider.currentTheme == "dark" ? white : black)),
+            ],
+          ),
         );
       }
     );

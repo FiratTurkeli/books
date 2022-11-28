@@ -1,3 +1,4 @@
+import 'package:books_app/constants/themes.dart';
 import 'package:books_app/database/darktheme_provider.dart';
 import 'package:books_app/responsive.dart';
 import 'package:books_app/router/router.dart';
@@ -30,8 +31,8 @@ class MyApp extends StatelessWidget {
     return Consumer<ThemeProvider>(
       builder: (context,provider,child){
         return MaterialApp.router(
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.dark(),
+            theme: lightTheme,
+            darkTheme: darkTheme,
             themeMode: provider.themeMode,
             debugShowCheckedModeBanner: false,
             routerDelegate: _appRouter.delegate(),

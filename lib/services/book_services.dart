@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +23,7 @@ class BookServices {
   }
 
   Future<bool> addProduct(Book book) async {
-    final response = await Dio().post(apiUrl, data: book.toJson(),);
+    final response = await Dio().post<Map<String, dynamic>>(apiUrl, data: jsonEncode(book), );
 
     if (response.statusCode == 200 ) {
       return true;

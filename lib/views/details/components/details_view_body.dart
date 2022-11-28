@@ -16,11 +16,12 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
       builder: (context, provider,child) {
         return Container(
           padding: const EdgeInsets.all(16),
+          color: Theme.of(context).primaryColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               //title+id
-              buildEventTitleAndId(provider.currentTheme == "dark" ? white : black,),
+              buildEventTitleAndId(Theme.of(context).textTheme.headline1?.color),
               //GENRE+ISBN
               buildGenreAndIsbn(),
 
@@ -32,7 +33,7 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
   }
 
 
-  Widget buildEventTitleAndId(Color color) {
+  Widget buildEventTitleAndId(Color? color) {
     return Row(
       children: [
         SizedBox(
@@ -44,7 +45,7 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
         ),
         Spacer(),
         Text(
-          "ID: " + widget.book.id.toString(),
+          "ID: ${widget.book.id}",
           style: headerStyle.copyWith(fontSize: 25, color: color),
         ),
 

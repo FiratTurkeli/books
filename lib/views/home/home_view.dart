@@ -4,8 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:books_app/constants/color.dart';
 import 'package:books_app/database/darktheme_provider.dart';
 import 'package:books_app/router/router.dart';
-import 'package:books_app/views/details/details.dart';
-import 'package:books_app/views/readlist/readlist.dart';
 import 'package:books_app/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,11 +30,11 @@ class HomeView extends HomeViewModel {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: HomeViewHeader(),
+          title: const HomeViewHeader(),
           actions: [
             GestureDetector(
               onTap: (){
-                context.router.navigate(ReadListRoute());
+                context.router.navigate(const ReadListRoute());
               },
               child: readListButton(),
             ),
@@ -66,10 +64,10 @@ class HomeView extends HomeViewModel {
   }
 
 
-  ActionChip buildActionChipCount(Color color){
+  ActionChip buildActionChipCount(Color? color){
     return ActionChip(
-        backgroundColor: color,
-        label: Text("${context.watch<User>().totalProduct}"),
+        backgroundColor: Theme.of(context).textTheme.bodyText2?.color,
+        label: Text("${context.watch<User>().totalProduct}", style: TextStyle(color: Theme.of(context).textTheme.headline1?.color),),
         onPressed: (){
         }
     );
@@ -88,9 +86,9 @@ class HomeView extends HomeViewModel {
           builder: (context, provider,child) {
             return Row(
               children: [
-                Center(child: Text("Read List", style: TextStyle(color: provider.currentTheme == "dark" ? black : white),)),
-                Icon(Icons.menu_book_rounded, color: provider.currentTheme == "dark" ? black : white,),
-                buildActionChipCount(provider.currentTheme == "dark" ? black : white)
+                Center(child: Text("Read List", style: TextStyle(color: Theme.of(context).textTheme.bodyText2?.color),)),
+                Icon(Icons.menu_book_rounded, color: Theme.of(context).textTheme.bodyText2?.color),
+                buildActionChipCount(Theme.of(context).textTheme.bodyText2?.color)
               ],
             );
           }

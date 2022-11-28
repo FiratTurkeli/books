@@ -60,6 +60,7 @@ class DetailsView extends DetailsViewModel with TickerProviderStateMixin {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 22, sigmaY: 22),
         child: Scaffold(
+          backgroundColor: Theme.of(context).primaryColor,
           body: Stack(
             children: <Widget>[
               SingleChildScrollView(
